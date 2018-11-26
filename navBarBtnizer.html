@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.navBarBnt {
+			width: 60px;
+			height: 60px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			background: #D40E1E;
+			border-radius: 50%;
+		}
+		.navBarBnt:hover{
+			background: #f5515e;
+		}
+		.navBarBnt__img {
+			width: 35px;
+			height: 4px;
+			background: #fff;
+			position: relative;
+			transition: background 0.4s;
+		}
+		.navBarBnt__img:after, .navBarBnt__img:before {
+			content: '';
+			display: block;
+			position: absolute;
+			background: #fff;
+			height: 4px;
+			width: 35px;
+			left: 0;
+			transition: 0.4s;
+		}
+		.navBarBnt__img:after {
+			top: 10px;
+		}
+		.navBarBnt__img:before {
+			top: -10px;
+		}
+		
+		.navBarBnt.active .navBarBnt__img {
+			background: transparent;
+		}
+
+		.navBarBnt.active .navBarBnt__img:after {
+			top: 0;
+			transform: rotateZ(-45deg);
+		}
+
+		.navBarBnt.active .navBarBnt__img:before{
+			top: 0;
+			transform: rotateZ(45deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="navBarBnt">
+		<div class="navBarBnt__img"></div>
+	</div>
+	<script>
+		window.addEventListener('load',()=>{
+			let navBtn = document.querySelector('.navBarBnt');
+			navBtn.addEventListener('click',(e)=>{
+				e.currentTarget.classList.toggle('active');
+			});
+		});
+	</script>
+</body>
+</html>
